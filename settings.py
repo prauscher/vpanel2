@@ -98,4 +98,5 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'crm',
     'crm_contacts',
+    'crm_member',
 )
