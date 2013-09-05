@@ -14,12 +14,12 @@ class NaturalPerson(models.Model):
 	birthDay = models.DateField()
 
 class ArtificialPerson(models.Model):
-	legalName = models.CharField(max_length=100)
+	legalName = models.CharField(max_length=100,unique=True)
 	contactGivenName = models.CharField(max_length=50)
 	contactSurName = models.CharField(max_length=30)
 
 class TelephoneNumber(models.Model):
-	telephone = models.CharField(max_length=20)
+	telephone = models.CharField(max_length=20, unique=True)
 
 class Email(models.Model):
-	email = models.EmailField()
+	email = models.EmailField(unique=True)
