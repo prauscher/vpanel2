@@ -1,8 +1,8 @@
+from crm.models import Entity
 from django.db import models
 from crm.models import Entity
 
-class Document(models.Model):
-	entity = models.ForeignKey(Entity)
+class Document(Entity):
 	name = models.CharField(max_length=40)
 	file = models.FileField(upload_to="document")
 
