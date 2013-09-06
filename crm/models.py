@@ -28,3 +28,6 @@ class Tag(models.Model):
 class Process(models.Model):
 	start = models.DateTimeField()
 	user = models.ForeignKey(User)
+
+class Filter(models.Model):
+	name = models.CharField(max_length=70)
