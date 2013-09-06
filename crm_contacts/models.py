@@ -6,17 +6,6 @@ class Contact(Entity):
 	telephoneNumbers = models.ManyToManyField("TelephoneNumber", blank = True)
 	emails = models.ManyToManyField("Email")
 
-	def __unicode__(self):
-		try:
-			return str(self.naturalperson)
-		except Contact.DoesNotExist:
-			pass
-
-		try:
-			return str(self.artificialperson)
-		except Contact.DoesNotExist:
-			pass
-
 class NaturalPerson(Contact):
 	givenName = models.CharField(max_length=30)
 	surName = models.CharField(max_length=50)
