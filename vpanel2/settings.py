@@ -126,6 +126,7 @@ INSTALLED_APPS = (
     'crm_contacts',
     'crm_member',
     'crm_document',
+    'accounting',
 )
 
 # A sample logging configuration. The only tangible logging
