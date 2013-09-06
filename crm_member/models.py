@@ -9,10 +9,9 @@ class Membership(models.Model):
 
 class Member(models.Model):
 	contact = models.ForeignKey(Contact)
-	membershipNumber = models.PositiveIntegerField()
 	membership = models.ForeignKey(Membership)
 	joinDate = models.DateField()
 	resignationDate = models.DateField(null = True, blank = True)
 
 	def __unicode__(self):
-		return str(self.contact) + " (#" + str(self.membershipNumber) + " - " + str(self.membership) + ": " + str(self.joinDate) + " - " + ("today" if self.resignationDate == None else str(self.resignationDate)) + ")"
+		return str(self.contact) + " (#" + str(self.id) + " - " + str(self.membership) + ": " + str(self.joinDate) + " - " + ("today" if self.resignationDate == None else str(self.resignationDate)) + ")"
