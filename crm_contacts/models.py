@@ -1,6 +1,5 @@
 from crm.models import Entity
 from django.db import models
-from crm.models import Entity
 
 class Contact(Entity):
 	telephoneNumbers = models.ManyToManyField("TelephoneNumber", blank = True)
