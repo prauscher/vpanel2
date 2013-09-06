@@ -7,3 +7,7 @@ class Document(Entity):
 
 	def __unicode__(self):
 		return self.name + " (" + str(self.file.size) + ")"
+
+class Archive(models.Model):
+	document = models.ForeignKey(Document, unique=True)
+	keepUntil = models.DateField()
