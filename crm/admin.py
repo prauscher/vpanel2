@@ -1,5 +1,4 @@
-from crm.models import Entity, Tag
+from crm.models import Tag
 from django.contrib import admin
 
-admin.site.register(Entity)
 admin.site.register(Tag)
