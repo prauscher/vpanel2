@@ -15,4 +15,4 @@ class Member(models.Model):
 	resignationDate = models.DateField(null = True, blank = True)
 
 	def __unicode__(self):
-		return Contact.__unicode__(self) + " (#" + str(self.membershipNumber) + " - " + str(self.membership) + ": " + str(self.joinDate) + " - " + ("today" if self.resignationDate == None else str(self.resignationDate)) + ")"
+		return str(self.contact) + " (#" + str(self.membershipNumber) + " - " + str(self.membership) + ": " + str(self.joinDate) + " - " + ("today" if self.resignationDate == None else str(self.resignationDate)) + ")"
