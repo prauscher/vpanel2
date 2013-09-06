@@ -31,3 +31,12 @@ class Process(models.Model):
 
 class Filter(models.Model):
 	name = models.CharField(max_length=70)
+
+class Invariant(models.Model):
+	"""
+	An Invariant is nothing more than a filter which has to return zero results. This is checked during every process
+	"""
+
+	filter = models.ForeignKey(Filter)
+	name = models.CharField(max_length=50)
+	description = models.TextField()
