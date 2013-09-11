@@ -126,6 +126,7 @@ INSTALLED_APPS = (
     'crm_contacts',
     'crm_member',
     'crm_document',
+    'crm_accounting',
     'accounting',
 )
 
