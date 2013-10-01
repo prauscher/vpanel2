@@ -1,0 +1,13 @@
+{% extends "vpanel2/base.html" %}
+{% load bootstrap %}
+
+{% block content %}
+<form role="form" class="form-horizontal" action="{% url "userauth_login" %}" method="post">
+ {% csrf_token %}
+ <input type="hidden" name="next" value="{{ next }}" />
+ {{ form|bootstrap }}
+ <div class="form-actions">
+  <button type="submit" class="btn btn-primary">Anmelden</button>
+ </div>
+</form>
+{% endblock %}

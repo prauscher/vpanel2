@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de">
+ <head>
+  <title>VPanel2 &middot; {% block title %}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+ </head>
+ <body>
+  <nav class="navbar navbar-default navbar-static-top" role="navigation">
+   <div class="container">
+   <a href="{% url "home" %}" class="navbar-brand">VPanel2</a>
+   <div class="navbar-right">
+    {% if user.is_authenticated %}
+     Angemeldet als {{ user.username }}
+     <a href="{% url "userauth_password_change" %}" class="btn btn-default navbar-btn">Passwort ändern</a>
+     <a href="{% url "userauth_logout" %}" class="btn btn-default navbar-btn">Logout</a>
+    {% else %}
+     <a href="{% url "userauth_login" %}" class="btn btn-default navbar-btn">Login</a>
+    {% endif %}
+   </div>
+   </div>
+  </nav>
+
+  <div class="container">
+   {% block content %}{% endblock %}
+  </div>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="//code.jquery.com/jquery.js"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+ </body>
+</html>

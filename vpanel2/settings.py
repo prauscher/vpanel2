@@ -39,6 +39,10 @@ LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
 
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'userauth_login'
+LOGOUT_URL = 'userauth_logout'
+
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
 USE_I18N = True
@@ -121,8 +125,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'south',
+    'bootstrapform',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    # Needed for the TemplateLoader
+    'vpanel2',
     'crm',
     'crm_contacts',
     'crm_member',
