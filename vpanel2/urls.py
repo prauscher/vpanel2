@@ -4,10 +4,6 @@ from django.contrib.auth.decorators import login_required
 import django.contrib.auth.views
 from django.views.generic.base import TemplateView
 
-# Uncomment the next two lines to enable the admin:
-from django.contrib import admin
-admin.autodiscover()
-
 urlpatterns = patterns('',
     # Example:
     # (r'^vpanel2/', include('vpanel2.foo.urls')),
@@ -16,7 +12,6 @@ urlpatterns = patterns('',
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     url(r'^$', login_required(TemplateView.as_view(template_name = "vpanel2/dashboard.html")), name="dashboard"),
-    url(r'^admin/', include(admin.site.urls)),
 
     url(r'^login/', django.contrib.auth.views.login, {'template_name': "vpanel2/login.html"}, name="userauth_login"),
     url(r'^logout/', django.contrib.auth.views.logout, {'next_page': "/"}, name="userauth_logout"),
@@ -24,3 +19,11 @@ urlpatterns = patterns('',
     url(r'^password/', django.contrib.auth.views.password_change, {'template_name': "vpanel2/password.html"}, name="userauth_password_change"),
     
 )
+
+## Uncomment the next lines to enable the admin (currently breaks everything):
+#from django.contrib import admin
+#admin.autodiscover()
+#urlpatterns += patterns('',
+#	url(r'^admin/', include(admin.site.urls))
+#)
+
