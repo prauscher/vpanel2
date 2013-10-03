@@ -1,0 +1,16 @@
+{% extends "vpanel2/base.html" %}
+
+{% block content %}
+<table class="table table-striped table-bordered table-hover">
+ <thead>
+  <tr>
+   <th>Kontakt</th>
+  </tr>
+ </thead>
+ {% for entity in object_list %}
+  <tr>
+   <td><a href="{% url "crm:detail" entity.id %}"><strong>{{entity}}</strong></a><br /><small>{{entity.emails.all}}</small></td>
+  </tr>
+ {% endfor %}
+</table>
+{% endblock %}
