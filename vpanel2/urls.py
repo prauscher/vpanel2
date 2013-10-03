@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    url(r'^$', login_required(TemplateView.as_view(template_name = "vpanel2/dashboard.html")), name="home"),
+    url(r'^$', login_required(TemplateView.as_view(template_name = "vpanel2/dashboard.html")), name="dashboard"),
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^login/', django.contrib.auth.views.login, {'template_name': "vpanel2/login.html"}, name="userauth_login"),

@@ -10,20 +10,37 @@
  <body>
   <nav class="navbar navbar-default navbar-static-top" role="navigation">
    <div class="container">
-   <a href="{% url "home" %}" class="navbar-brand">VPanel2</a>
+   <a href="{% url "dashboard" %}" class="navbar-brand"><span style="color: #F7931E; font-weight: bold;">V</span>Panel2</a>
+   <ul class="nav navbar-nav">
+    {% for nav in navigation %}
+     {% if nav.url != "" %}
+      <li><a href="{% url nav.url %}"><i class="glyphicon glyphicon-{{nav.icon}}" title="{{nav.label}}"></i> {{nav.label}}</a></li>
+     {% elif nav.dropdown|length > 0 %}
+      <li class="dropdown">
+       <a class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-{{nav.icon}}" title="{{nav.label}}"></i> {{nav.label}}</a>
+       <ul class="dropdown-menu">
+        {% for subNav in nav.dropdown %}
+         <li><a href="{% url subNav.url %}">{{subNav.label}}</a></li>
+        {% endfor %}
+       </ul>
+      </li>
+     {% endif %}
+    {% endfor %}
+   </ul>
    <div class="navbar-right">
     {% if user.is_authenticated %}
-     Angemeldet als {{ user.username }}
-     <a href="{% url "userauth_password_change" %}" class="btn btn-default navbar-btn">Passwort ändern</a>
-     <a href="{% url "userauth_logout" %}" class="btn btn-default navbar-btn">Logout</a>
+     <p class="navbar-text">{{ user.username }}</p>
+     <a href="{% url "userauth_password_change" %}" class="btn btn-default navbar-btn"><i class="glyphicon glyphicon-wrench"></i></a>
+     <a href="{% url "userauth_logout" %}" class="btn btn-default navbar-btn"><i class="glyphicon glyphicon-log-out"></i></a>
     {% else %}
-     <a href="{% url "userauth_login" %}" class="btn btn-default navbar-btn">Login</a>
+     <a href="{% url "userauth_login" %}" class="btn btn-default navbar-btn"><i class="glyphicon glyphicon-log-in"></i></a>
     {% endif %}
    </div>
    </div>
   </nav>
 
   <div class="container">
+   {% block toolbar %}{% endblock %}
    {% block content %}{% endblock %}
   </div>
 
