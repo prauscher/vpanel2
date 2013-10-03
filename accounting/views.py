@@ -1,10 +1,14 @@
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic import DeleteView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, FormView
 
 from models import Journal, Account, Record, Split
-from forms import JournalForm
+from forms import TransferForm, JournalForm
+
+class TransferView(FormView):
+	template_name = "accounting/transfer.html"
+	form_class = TransferForm
 
 class JournalListView(ListView):
 	model = Journal
