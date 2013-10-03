@@ -14,4 +14,4 @@ class Member(models.Model):
 	resignationDate = models.DateField(null=True, blank=True, verbose_name="Austrittsdatum")
 
 	def __unicode__(self):
-		return str(self.contact) + " (#" + str(self.id) + ": " + str(self.membership) + (" [ausgetreten]" if self.resignationDate != None) + ")"
+		return str(self.contact) + " (#" + str(self.id) + ": " + str(self.membership) + (" [ausgetreten]" if self.resignationDate != None else "") + ")"
