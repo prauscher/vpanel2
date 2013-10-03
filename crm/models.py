@@ -6,9 +6,9 @@ class Entity(models.Model):
 	An Entity is the base of every part of the CRM.
 	"""
 
-	links = models.ManyToManyField("self", blank = True)
-	tags = models.ManyToManyField("Tag", blank = True)
-	memo = models.TextField(blank = True)
+	links = models.ManyToManyField("self", blank=True, verbose_name="Verwandt")
+	tags = models.ManyToManyField("Tag", blank=True, verbose_name="Tags")
+	memo = models.TextField(blank=True, verbose_name="Notiz")
 
 	def getEntity(self):
 		for rel in self._meta.get_all_related_objects():
@@ -38,15 +38,15 @@ class Process(models.Model):
 	Each change of a Entity is done via a Process which will be archived for later research
 	"""
 
-	start = models.DateTimeField()
-	user = models.ForeignKey(User)
+	start = models.DateTimeField(verbose_name="Start")
+	user = models.ForeignKey(User, verbose_name="Verantwortlich")
 
 class Filter(models.Model):
 	"""
 	A Filter may be used to identify only the Entities you are looking for. This is the baseclass
 	"""
 
-	name = models.CharField(max_length=70)
+	name = models.CharField(max_length=70, verbose_name="Bezeichnung")
 
 class Invariant(models.Model):
 	"""
@@ -54,5 +54,5 @@ class Invariant(models.Model):
 	"""
 
 	filter = models.ForeignKey(Filter)
-	name = models.CharField(max_length=50)
-	description = models.TextField()
+	name = models.CharField(max_length=50, verbose_name="Bezeichnung")
+	description = models.TextField(blank=True, verbose_name="Beschreibung")

@@ -2,21 +2,21 @@ from crm.models import Entity
 from django.db import models
 
 class Contact(Entity):
-	telephoneNumbers = models.ManyToManyField("TelephoneNumber", blank = True)
-	emails = models.ManyToManyField("Email")
+	telephoneNumbers = models.ManyToManyField("TelephoneNumber", blank=True, verbose_name="Telefonnummern")
+	emails = models.ManyToManyField("Email", verbose_name="Mailadressen")
 
 class NaturalPerson(Contact):
-	givenName = models.CharField(max_length=30)
-	surName = models.CharField(max_length=50)
-	birthDay = models.DateField()
+	givenName = models.CharField(max_length=30, verbose_name="Vorname")
+	surName = models.CharField(max_length=50, verbose_name="Nachname")
+	birthDay = models.DateField(verbose_name="Geburtsdatum")
 
 	def __unicode__(self):
 		return self.givenName + " " + self.surName
 
 class ArtificialPerson(Contact):
-	legalName = models.CharField(max_length=100, unique=True)
-	contactGivenName = models.CharField(max_length=50)
-	contactSurName = models.CharField(max_length=30)
+	legalName = models.CharField(max_length=100, unique=True, verbose_name="Firma")
+	contactGivenName = models.CharField(max_length=50, blank=True, verbose_name="Vorname Ansprechpartner")
+	contactSurName = models.CharField(max_length=30, blank=True, verbose_name="Nachname Ansprechpartner")
 
 	def __unicode__(self):
 		return self.legalName
