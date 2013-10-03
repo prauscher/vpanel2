@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 
-from django.views.generic.base import TemplateView
+from views import EntityDetailView
 
 urlpatterns = patterns('',
-	url(r'^(?P<pk>\d+)$', TemplateView.as_view(), name="detail")
+	url(r'^(?P<pk>\d+)$', EntityDetailView.as_view(), name="detail")
 )
