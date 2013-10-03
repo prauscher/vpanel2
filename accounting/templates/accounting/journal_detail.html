@@ -1,0 +1,10 @@
+{% extends "vpanel2/base.html" %}
+
+{% block toolbar %}
+<a class="btn btn-info" href="{% url "accounting:journal_update" object.id %}">Bearbeiten</a>
+<a class="btn btn-danger" href="{% url "accounting:journal_delete" object.id %}">Löschen</a>
+{% endblock %}
+
+{% block content %}
+{{object}}
+{% endblock %}
