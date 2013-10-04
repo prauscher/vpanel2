@@ -15,6 +15,12 @@ class Account(models.Model):
 	code = models.CharField(max_length=10, verbose_name="Kontonummer")
 	name = models.CharField(max_length=50, verbose_name="Bezeichnung")
 
+	def getJournal(self):
+		if self.parent == None:
+			return self.journal_set.get()
+		else:
+			return self.parent.getJournal()
+
 	def __unicode__(self):
 		return self.code + " " + self.name
 
