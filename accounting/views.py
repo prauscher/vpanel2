@@ -41,9 +41,11 @@ class JournalDeleteView(DeleteView):
 	model = Journal
 
 class JournalUpdateView(UpdateView):
-	template_name = "accounting/journal_form.html"
+	model = Journal
 	form_class = JournalForm
+	template_name = "accounting/journal_form.html"
 
 class JournalCreateView(CreateView):
+	model = Journal
 	template_name = "accounting/journal_form.html"
 	form_class = JournalForm

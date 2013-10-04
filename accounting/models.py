@@ -2,10 +2,15 @@
 
 from django.db import models
 
+from django.core.urlresolvers import reverse
+
 class Journal(models.Model):
 	label = models.CharField(max_length=30, verbose_name="Bezeichnung")
 	allowNull = models.BooleanField(verbose_name="Erzwinge Kontenrahmen nicht")
 	rootAccounts = models.ManyToManyField("Account", blank=True)
+
+	def get_absolute_url(self):
+		return reverse("accounting:journal_detail", kwargs={"pk":self.pk})
 
 	def __unicode__(self):
 		return self.label

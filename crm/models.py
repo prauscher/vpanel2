@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from django.core.urlresolvers import reverse
+
 class Entity(models.Model):
 	"""
 	An Entity is the base of every part of the CRM.
@@ -19,6 +21,9 @@ class Entity(models.Model):
 			except Entity.DoesNotExist:
 				pass
 		return self
+
+	def get_absolute_url(self):
+		return reverse("crm:detail", kwargs={"pk": self.pk})
 
 	def __unicode__(self):
 		return str(self.getEntity())
