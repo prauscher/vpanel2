@@ -26,9 +26,11 @@ class Account(models.Model):
 
 class Record(models.Model):
 	pass
+#	voucher = models.CharField(max_length=15, verbose_name="Beleg")
+#	date = models.DateField()
 
 class Split(models.Model):
 	record = models.ForeignKey(Record, verbose_name="Buchung")
-	account = models.ForeignKey(Account, verbose_name="Konto")
+	accounts = models.ManyToManyField(Account, verbose_name="Konto")
 	note = models.CharField(max_length=50, blank=True)
 	value = models.IntegerField()

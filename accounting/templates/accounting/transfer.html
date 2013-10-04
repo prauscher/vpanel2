@@ -2,5 +2,25 @@
 {% load bootstrap %}
 
 {% block content %}
-{{form | bootstrap}}
+<form method="post">
+ {% csrf_token %}
+ {{form | bootstrap}}
+ {{split_forms.management_form}}
+ <table class="table">
+  <tr>
+   <th>Buchungsvermerk</th>
+   <th>Betrag</th>
+   {% for journal in journals %}
+    <th>{{journal}}</th>
+   {% endfor %}
+  </tr>
+  {% for split in split_forms %}
+   <tr>
+    <td>{{split.note}}</td>
+    <td>{{split.value}}</td>
+   </tr>
+  {% endfor %}
+ </table>
+ <input type="submit" value="Buchen" class="btn btn-primary" />
+</form>
 {% endblock %}
